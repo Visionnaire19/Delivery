@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "702651356438",
+    "firebase_url": "https://delivery-1b761.firebaseio.com",
+    "project_id": "delivery-1b761",
+    "storage_bucket": "delivery-1b761.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702651356438:android:71f3ef84181944233b2c37",
+        "android_client_info": {
+          "package_name": "com.eduvision.version2.corona"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702651356438-701u8jka3gtvs8qruo4ga184128q6k85.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eduvision.version2.corona",
+            "certificate_hash": "dbee09c15372568eea333436d67ec9424087f0fc"
+          }
+        },
+        {
+          "client_id": "702651356438-m4akfe7v3dq133t9nb7if82mbl99ohs2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4WCLxHW0h14yWJ96QmXn4h3OEZnQ-fbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702651356438-m4akfe7v3dq133t9nb7if82mbl99ohs2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
