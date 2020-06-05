@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/thrid_layer"
+    tools:context=".SlideActivity">
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_parent"/>
+    <LinearLayout
+        android:id="@+id/layout_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal" />
+    <Button
+        android:id="@+id/next1"
+        android:layout_width="100dp"
+        android:text="Start"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/rectangle_white"
+        android:textColor="@color/White"
+        android:textAlignment="textStart"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:drawableEnd="@drawable/ic_next"
+        android:paddingLeft="20dp"
+        android:drawableRight="@drawable/ic_next" />
+
+
+</RelativeLayout>

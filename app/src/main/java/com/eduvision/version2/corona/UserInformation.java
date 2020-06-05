@@ -2,19 +2,23 @@ package com.eduvision.version2.corona;
 
 public class UserInformation {
 
-    public String name;
+    public String Store;
     public String numero;
 
     public UserInformation(){
     }
 
-    public UserInformation(String name, String numero){
-        this.name = name;
+    public UserInformation(String numero, String store){
+        this.Store = store;
 
         this.numero = numero;
     }
-    public String getUserName() {
-        return name;
+    public String getStore() {
+        return Store;
+    }
+
+    public void setStore(String store) {
+        Store = store;
     }
 
     public String getUserNumero() {

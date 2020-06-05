@@ -1,106 +1,134 @@
 package com.eduvision.version2.corona;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
+import com.eduvision.version2.corona.Acheteurs.MainActivity;
+import com.eduvision.version2.corona.Acheteurs.SeconActitvity;
+import com.eduvision.version2.corona.Sellers.ProfileFragment;
+import com.google.android.gms.auth.GoogleAuthException;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.VideoView;
+
+import java.util.HashMap;
+import java.util.concurrent.BlockingDeque;
+
+import static com.eduvision.version2.corona.R.string.default_web_client_id;
 
 public class sign_up extends AppCompatActivity {
 
-    EditText Nom,Password,Telephone,Email;
-    String nom,email,password,telephone;
-    Button SignUpButton;
-  FirebaseAuth auth;
-    DatabaseReference databaseReference;
-     StorageReference storageReference;
-    FirebaseStorage firebaseStorage;
+    Button login, register;
+    FirebaseUser firebaseUser;
+    GoogleSignInClient mGoogleSignInClient;
+    FirebaseAuth mAuth;
+    static final int GOOGLE_SIGN = 123;
+    private Button btnLogin;
+    private Intent homeactivity;
+    VideoView videoView;
+
+    @Override
+    protected void onStart() {
+        super.onStart ();
+
+        firebaseUser = FirebaseAuth.getInstance ().getCurrentUser ();
+
+        //redirect if user is not null
+
+        if (firebaseUser != null) {
+            startActivity (new Intent (sign_up.this, MainActivity.class));
+            finish ();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        Nom = findViewById(R.id.sign_up_nom);
-        Email = findViewById(R.id.sign_up_email);
-        Password = findViewById(R.id.sign_up_password);
-        Telephone = findViewById(R.id.sign_up_numero);
-        SignUpButton = findViewById(R.id.sign_up_button);
-        auth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReference();
+        videoView = findViewById (R.id.video);
 
-
-
-        SignUpButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-             nom = Nom.getText().toString();
-               email = Email.getText().toString();
-                 password = Password.getText().toString();
-                telephone = Telephone.getText().toString();
-
-
-                if(TextUtils.isEmpty(nom)){
-                    Toast.makeText(getApplicationContext(),"Entrez votre nom",Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(email)){
-                    Toast.makeText(getApplicationContext(),"Entrez votre email",Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(password)){
-                    Toast.makeText(getApplicationContext(),"Entrez votre mot de passe",Toast.LENGTH_LONG).show();
-                }
-                if(TextUtils.isEmpty(telephone)){
-                    Toast.makeText(getApplicationContext(),"Entrez votre numero de telephone",Toast.LENGTH_LONG).show();
-                }
-                if (password.length()<8){
-                    Toast.makeText(getApplicationContext(),"Le mot de passe doit avoir plus de 8 caracteres.", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    auth.createUserWithEmailAndPassword(email,password)
-                            .addOnCompleteListener(sign_up.this, new OnCompleteListener<AuthResult>() {
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (!task.isSuccessful()) {
-                                        Toast.makeText(sign_up.this, "ERROR",Toast.LENGTH_LONG).show();
-                                    }
-                                    else {
-                                        FirebaseUser user = auth.getCurrentUser();
-                                        UserInformation userinformation = new UserInformation(nom, telephone);
-                                        databaseReference.child(user.getUid()).setValue(userinformation);
-                                        Toast.makeText(getApplicationContext(),nom,Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(sign_up.this,MainActivity.class));
-                                        finish();
-                                    }
-                                }
-                            });}
+        String path = "android.resource://com.eduvision.version2.corona/"+R.raw.bring;
+        Uri u = Uri.parse (path);
+        videoView.setVideoURI (u);
+        videoView.start ();
+        videoView.setOnPreparedListener (new MediaPlayer.OnPreparedListener () {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping (true);
             }
         });
+
+
+        register = findViewById (R.id.sign_up);
+        btnLogin = (Button) findViewById (R.id.log_in);
+        homeactivity = new Intent (this, MainActivity.class);
+
+        register.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                startActivity (new Intent (getApplicationContext (), SeconActitvity.class));
+            Toast.makeText (sign_up.this,"Please wait..",Toast.LENGTH_SHORT).show ();
+            }
+        });
+
+        btnLogin.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                startActivity (new Intent (getApplicationContext (),RegisterActivity.class));
+            }
+        });
+
     }
 
 
 
 
+
+    @Override
+    protected void onResume() {
+        videoView.resume ();
+        super.onResume ();
     }
+
+    @Override
+    protected void onDestroy() {
+        videoView.stopPlayback ();
+        super.onDestroy ();
+    }
+
+    @Override
+    protected void onPause() {
+        videoView.suspend ();
+        super.onPause ();
+    }
+}
 

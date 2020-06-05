@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#333335"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="35dp"
+        android:id="@+id/text"
+        android:text="Gerez votre store :"
+        android:textSize="20dp"
+        android:textColor="#FFFF"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="#FFF"
+        android:id="@+id/Publish"
+        android:text="Publish new article"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/text"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="#FFF"
+        android:id="@+id/publish_clothes1"
+        android:text="Publish new clothes"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"
+
+        android:layout_below="@id/text"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#333335"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/a"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_buy"/>
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="By J"
+            android:textSize="13dp"
+            android:layout_alignParentRight="true"
+            />
+
+   <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/a"
+        android:text=""
+        android:id="@+id/store_name"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/White"
+        android:textSize="16sp"
+        android:layout_marginLeft="5dp"
+
+        />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="90dp"
+    android:id="@+id/text"
+    android:text="Ajoutez un produit"
+    android:textSize="20dp"
+    android:textColor="#FFFF"/>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/hauts"
+        android:layout_marginTop="20dp"
+       android:src="@drawable/shirt"
+        android:layout_below="@id/text" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:src="@drawable/shoes"
+        android:id="@+id/shoes1"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/hauts"/>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:src="@drawable/acessoires"
+        android:id="@+id/gift"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/shoes1"/>
+
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

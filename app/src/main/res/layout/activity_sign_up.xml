@@ -1,69 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sign_up">
+    android:id="@+id/mylayout"
+    android:background="#181818"
+    tools:context=".sign_up"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Nom"
-        android:id="@+id/sign_up_nom"
-        android:padding="8dp"
-        android:inputType="text">
-
-    </EditText>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:id="@+id/sign_up_email"
-            android:padding="8dp"
-            android:inputType="textEmailAddress">
-
-        </EditText>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/video"/>
+    <Button
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:text="Sign up"
+        android:textAllCaps="false"
+        android:id="@+id/sign_up"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/btn"/>
 
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Mot de passe"
-            android:id="@+id/sign_up_password"
-            android:padding="8dp"
-            android:inputType="text">
+    <Button
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/log_in"
+        android:background="@drawable/edit_text"
+        android:text="Sign in"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginRight="30dp"
+       />
 
-    </EditText>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="27dp"
+        android:text="Get Started!"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/White"
+        android:layout_height="30dp"
+        android:gravity="center_horizontal" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Numero de Telephone"
-            android:id="@+id/sign_up_numero"
-            android:padding="8dp"
-            android:inputType="phone">
-
-        </EditText>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Inscrivez vous"
-            android:background="#00FFFF"
-            android:gravity="center_horizontal"
-            android:layout_margin="16dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/sign_up_button">
-
-        </Button>
-</LinearLayout>
-
-</ScrollView>
+</RelativeLayout>
