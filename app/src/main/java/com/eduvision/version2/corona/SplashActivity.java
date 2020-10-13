@@ -15,7 +15,8 @@ import android.widget.TextView;
 import com.eduvision.version2.corona.R;
 
 
-public class SplashActivity extends AppCompatActivity {
+public class
+SplashActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME = 2000;
     @Override
@@ -38,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                             }).show ();
                 }
                 else{
-                    Intent intent1 = new Intent (SplashActivity.this,Choose2Activity.class);
+                    Intent intent1 = new Intent (SplashActivity.this,Choose2Activity.class);  
                     startActivity (intent1);
                     finish ();
 
